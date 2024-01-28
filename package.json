@@ -1,6 +1,6 @@
 {
   "name": "@refastdev/create-refast-app",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.0",
   "description": "create-refast-app",
   "main": "dist/index.js",
   "license": "MIT",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/refastdev/refast"
+    "url": "https://github.com/refastdev/create-refast-app"
   },
   "publishConfig": {
     "access": "public"
@@ -31,6 +31,11 @@
   "bugs": "https://github.com/refastdev/create-refast-app/issues",
   "authors": [
     "luoluoqixi <luoqixi@luoqixi.com> (https://github.com/luoluoqixi)"
+  ],
+  "keywords": [
+    "refast",
+    "create-refast-app",
+    "react"
   ],
   "dependencies": {
     "@inquirer/prompts": "^3.3.2",

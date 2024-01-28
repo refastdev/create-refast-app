@@ -1,0 +1,10 @@
+{
+  "mode": "pre",
+  "tag": "alpha",
+  "initialVersions": {
+    "@refastdev/create-refast-app": "0.0.0"
+  },
+  "changesets": [
+    "khaki-doors-call"
+  ]
+}
