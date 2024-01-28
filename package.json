@@ -1,6 +1,6 @@
 {
   "name": "@refastdev/create-refast-app",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.1-alpha.1",
   "description": "create-refast-app",
   "main": "dist/index.js",
   "license": "MIT",
@@ -17,15 +17,15 @@
       "node": "./dist/index.js"
     }
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/refastdev/create-refast-app"
-  },
   "publishConfig": {
     "access": "public"
   },
   "engines": {
     "node": ">=16"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/refastdev/create-refast-app"
   },
   "homepage": "https://github.com/refastdev/create-refast-app#readme",
   "bugs": "https://github.com/refastdev/create-refast-app/issues",

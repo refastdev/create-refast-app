@@ -5,6 +5,7 @@
     "@refastdev/create-refast-app": "0.0.0"
   },
   "changesets": [
+    "breezy-countries-destroy",
     "khaki-doors-call"
   ]
 }

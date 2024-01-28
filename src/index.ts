@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { input, select } from '@inquirer/prompts'
 
 import { create } from './create'
