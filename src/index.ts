@@ -20,13 +20,9 @@ const main = async () => {
     message: 'Choose Package Manager',
     choices: [{ name: 'pnpm (default)', value: 'pnpm' }, { value: 'npm' }]
   })
-  const isEslint = await confirm({
-    message: 'Is Add Eslint',
-    default: true
-  })
-  const isPrettier = await confirm({
-    message: 'Is Add Prettier',
-    default: true
+  const framework = await select({
+    message: 'Choose Framework',
+    choices: [{ name: 'react (default)', value: 'react' }, { value: 'preact' }]
   })
   const isHusky = await confirm({
     message: 'Is Add Husky',
@@ -34,7 +30,7 @@ const main = async () => {
   })
   try {
     console.log('please wait...')
-    await create({ projectName, appType, script, pkg, isEslint, isPrettier, isHusky })
+    await create({ projectName, appType, script, pkg, framework, isHusky })
     console.log(`✅ create done! ${projectName}`)
   } catch (e) {
     console.error(`${e}`)
