@@ -6,6 +6,7 @@
   },
   "changesets": [
     "breezy-countries-destroy",
+    "funny-beans-call",
     "khaki-doors-call"
   ]
 }
