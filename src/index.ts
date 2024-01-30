@@ -14,7 +14,7 @@ const main = async () => {
   })
   const script = await select({
     message: 'Choose Language',
-    choices: [{ name: 'typescript (default)', value: 'javascript' }, { value: 'javascript' }]
+    choices: [{ name: 'typescript (default)', value: 'typescript' }, { value: 'javascript' }]
   })
   const pkg = await select({
     message: 'Choose Package Manager',
@@ -25,7 +25,7 @@ const main = async () => {
     choices: [{ name: 'react (default)', value: 'react' }, { value: 'preact' }]
   })
   const isHusky = await confirm({
-    message: 'Is Add Husky',
+    message: 'Is Add Husky (default: true)',
     default: true
   })
   try {
