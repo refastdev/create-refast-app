@@ -1,5 +1,11 @@
 # @refastdev/create-refast-app
 
+## 0.0.1-alpha.4
+
+### Patch Changes
+
+- update readme
+
 ## 0.0.1-alpha.3
 
 ### Patch Changes
