@@ -1,1 +1,2 @@
 # Create Refast App
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/refastdev/create-refast-app/blob/main/LICENSE) [![npm version](https://img.shields.io/npm/v/@refastdev/create-refast-app.svg?style=flat)](https://npmjs.com/package/@refastdev/create-refast-app) [![Downloads](https://img.shields.io/npm/dm/@refastdev/create-refast-app.svg?style=flat)](https://npmjs.com/package/@refastdev/create-refast-app)
