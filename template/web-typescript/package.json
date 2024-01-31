@@ -19,6 +19,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@refastdev/refast": "=0.0.1-alpha.2",
     "@refastdev/refast-dev": "^0.0.1-alpha.5",
     "@types/jest": "^29.5.11",
     "@types/node": "^20.11.10",
