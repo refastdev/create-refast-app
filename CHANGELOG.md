@@ -1,5 +1,17 @@
 # @refastdev/create-refast-app
 
+## 0.0.1
+
+### Patch Changes
+
+- d311400: fix npx run
+- 8918ec6: add typescript template
+- 829354a: initialize create-refast-app
+- de70786: fix typescript value
+- update web-typescript template
+- 3e74ed9: update readme
+- 5da4296: update template
+
 ## 0.0.1-alpha.5
 
 ### Patch Changes
