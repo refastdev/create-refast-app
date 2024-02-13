@@ -1,8 +1,8 @@
 /// <reference types="vitest" />
 /// <reference types="vite" />
-import path from 'path'
-import { defineConfig } from 'vite'
-import { externalizeDeps } from 'vite-plugin-externalize-deps'
+import path from 'path';
+import { defineConfig } from 'vite';
+import { externalizeDeps } from 'vite-plugin-externalize-deps';
 
 export default defineConfig({
   appType: 'custom',
@@ -16,8 +16,8 @@ export default defineConfig({
       devDeps: true,
       nodeBuiltins: true,
       peerDeps: true,
-      optionalDeps: true
-    })
+      optionalDeps: true,
+    }),
   ],
   build: {
     minify: false,
@@ -27,12 +27,12 @@ export default defineConfig({
       entry: path.join(__dirname, 'src/index.ts'),
       formats: ['cjs'],
       name: 'create-refast-app',
-      fileName: 'index'
-    }
+      fileName: 'index',
+    },
   },
   test: {
     include: ['test/**/*.test.?(c|m)[jt]s?(x)'],
     exclude: ['**/node_modules/**', '**/dist/**'],
-    globals: true
-  }
-})
+    globals: true,
+  },
+});
