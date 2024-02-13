@@ -10,7 +10,7 @@ export default function App() {
     <div>
       App
       <div>
-        <input type="text" value={data.text} onChange={e => (store.text = e.target.value)} />
+        <input type="text" value={data.text} onChange={(e) => (store.text = e.target.value)} />
       </div>
       <div>
         <button onClick={() => (store.text = 'click')}>Click Change Input Text</button>

@@ -1,6 +1,6 @@
 /** @type {import("prettier").Config} */
 module.exports = {
-  arrowParens: 'avoid', // 只有一个参数的箭头函数也带括号, 不带括号是avoid
+  arrowParens: 'always', // 只有一个参数的箭头函数也带括号, 不带括号是avoid
   bracketSameLine: false, // </>放在最后一行的末尾
   bracketSpacing: true, // 大括号间使用空格
   htmlWhitespaceSensitivity: 'ignore',
@@ -21,6 +21,6 @@ module.exports = {
   useTabs: false, // 不使用tab缩进
   plugins: [
     '@trivago/prettier-plugin-sort-imports', // 自动排序import
-    'prettier-plugin-sort-json' // 自动对json文件的key排序
-  ]
-}
+    'prettier-plugin-sort-json', // 自动对json文件的key排序
+  ],
+};

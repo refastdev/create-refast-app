@@ -30,7 +30,7 @@ const dirCopy = (
   targetPath: string,
   writeFile: (srcPath: string, toPath: string) => boolean,
 ) => {
-  fileForeach(sourcePath, relativePath => {
+  fileForeach(sourcePath, (relativePath) => {
     const filePath = path.join(sourcePath, relativePath);
     const targetFilePath = path.join(targetPath, relativePath);
     const dir = path.dirname(targetFilePath);
