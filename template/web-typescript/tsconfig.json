@@ -3,6 +3,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "jsx": "react-jsx",
+    "types": ["jest"]
   },
   "extends": ["./node_modules/@refastdev/refast-dev/base-tsconfig.json"],
   "exclude": ["node_modules"],
