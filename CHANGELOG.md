@@ -1,5 +1,11 @@
 # @refastdev/create-refast-app
 
+## 0.0.3
+
+### Patch Changes
+
+- update template refast version
+
 ## 0.0.2
 
 ### Patch Changes

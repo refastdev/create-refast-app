@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@refastdev/refast':
-    specifier: ^0.0.7
-    version: 0.0.7(@types/react@18.2.48)(react-router-dom@6.22.0)(react@18.2.0)(vite@5.0.12)
+    specifier: ^0.0.8
+    version: 0.0.8(@types/react@18.2.48)(react-router-dom@6.22.0)(react@18.2.0)(vite@5.0.12)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -17,8 +17,8 @@ dependencies:
 
 devDependencies:
   '@refastdev/refast-dev':
-    specifier: ^0.0.7
-    version: 0.0.7(@babel/core@7.23.9)(esbuild@0.19.12)(preact@10.19.3)(react@18.2.0)(terser@5.27.0)(vite@5.0.12)
+    specifier: ^0.0.8
+    version: 0.0.8(@babel/core@7.23.9)(esbuild@0.19.12)(preact@10.19.3)(react@18.2.0)(terser@5.27.0)(vite@5.0.12)
   '@types/jest':
     specifier: ^29.5.11
     version: 29.5.11
@@ -1865,22 +1865,22 @@ packages:
       - supports-color
     dev: true
 
-  /@refastdev/i18n-extract@0.0.4(react@18.2.0)(vite@5.0.12):
-    resolution: {integrity: sha512-xSbv8DvUBX2IgjWbDk6UdEG8bOU6sLSUQOonKXBPaXjSglV4sGGLXMlidKd194jaIjWlgbT+17c/ilngj/WSSQ==}
+  /@refastdev/i18n-extract@0.0.5(react@18.2.0)(vite@5.0.12):
+    resolution: {integrity: sha512-iAmCVRRBrrZ184ZlFgdy7f+47yMmWlRH6wtFo5DWUltcDuqkw7yteuqNngb7gT5ArhQ4j1R1KH7Ll2kA48z4jw==}
     engines: {node: '>=16'}
     hasBin: true
     peerDependencies:
       react: '>=18'
       vite: '>=4'
     dependencies:
-      '@refastdev/i18n': 0.0.3(react@18.2.0)(vite@5.0.12)
+      '@refastdev/i18n': 0.0.4(react@18.2.0)(vite@5.0.12)
       commander: 12.0.0
       react: 18.2.0
       vite: 5.0.12(@types/node@20.11.10)(sass@1.70.0)(terser@5.27.0)
     dev: true
 
-  /@refastdev/i18n@0.0.3(react@18.2.0)(vite@5.0.12):
-    resolution: {integrity: sha512-8U2dJVru057kvwbWoJ13/1sy9H6V4YpKMDA3vXRK4dt3PA47oNnTrMqfbus2sbF1Zn2bDxHar3Jwhm3yytcwtA==}
+  /@refastdev/i18n@0.0.4(react@18.2.0)(vite@5.0.12):
+    resolution: {integrity: sha512-jCg0e7OHkCOgjJTtGV/RL8PjoPnkpSc6GOByMZjW41G6s6F6MCpe2uo3k3JTRfB+uwkZx26tusO1LZlJfLFNuQ==}
     engines: {node: '>=16'}
     peerDependencies:
       react: '>=18'
@@ -1890,14 +1890,14 @@ packages:
       react: 18.2.0
       vite: 5.0.12(@types/node@20.11.10)(sass@1.70.0)(terser@5.27.0)
 
-  /@refastdev/refast-dev@0.0.7(@babel/core@7.23.9)(esbuild@0.19.12)(preact@10.19.3)(react@18.2.0)(terser@5.27.0)(vite@5.0.12):
-    resolution: {integrity: sha512-C64cNpxQhTRAjXUySuNdWKx5CloP/4a2NBhZVJ7fISdTGznNmqfPKpO/BicaD0i0r08rK9rjrw0wjqFrptD6/w==}
+  /@refastdev/refast-dev@0.0.8(@babel/core@7.23.9)(esbuild@0.19.12)(preact@10.19.3)(react@18.2.0)(terser@5.27.0)(vite@5.0.12):
+    resolution: {integrity: sha512-C5x84YGeG4mtG4P58V1slifAtFSTeU591fhHfh3cZKQiOp7LG/OCpU6wgm5LX/HOTNROzaxgzVyBR96MWWcTYA==}
     engines: {node: '>=16'}
     hasBin: true
     requiresBuild: true
     dependencies:
       '@preact/preset-vite': 2.8.1(@babel/core@7.23.9)(preact@10.19.3)(vite@5.0.12)
-      '@refastdev/i18n-extract': 0.0.4(react@18.2.0)(vite@5.0.12)
+      '@refastdev/i18n-extract': 0.0.5(react@18.2.0)(vite@5.0.12)
       '@vitejs/plugin-legacy': 5.3.0(esbuild@0.19.12)(terser@5.27.0)(vite@5.0.12)
       '@vitejs/plugin-react': 4.2.1(vite@5.0.12)
       commander: 12.0.0
@@ -1917,8 +1917,8 @@ packages:
       - vite
     dev: true
 
-  /@refastdev/refast@0.0.7(@types/react@18.2.48)(react-router-dom@6.22.0)(react@18.2.0)(vite@5.0.12):
-    resolution: {integrity: sha512-mZNF0vxpSW+XArdIdU69JXvEzSMOgyVFVaP/5XVgq2Jdt3vaWfyhWSbQA6EwaD6YiH8ZWgi/NwBec53mEiYiOw==}
+  /@refastdev/refast@0.0.8(@types/react@18.2.48)(react-router-dom@6.22.0)(react@18.2.0)(vite@5.0.12):
+    resolution: {integrity: sha512-T7N7lnIBcC5agMQabxZaalwvIpBYuRqkE0mClJFyBy8PZkErw9998oXwO7YAS95G3HKIJk+r1Foo2eCt4fUY0A==}
     engines: {node: '>=16'}
     peerDependencies:
       react: '>=18'
@@ -1926,7 +1926,7 @@ packages:
       vite: '>=4'
     dependencies:
       '@generouted/react-router': 1.18.2(react-router-dom@6.22.0)(react@18.2.0)(vite@5.0.12)
-      '@refastdev/i18n': 0.0.3(react@18.2.0)(vite@5.0.12)
+      '@refastdev/i18n': 0.0.4(react@18.2.0)(vite@5.0.12)
       axios: 1.6.7
       crypto-js: 4.2.0
       immer: 10.0.3
