@@ -1,5 +1,11 @@
 # @refastdev/create-refast-app
 
+## 0.0.2
+
+### Patch Changes
+
+- update templte
+
 ## 0.0.1
 
 ### Patch Changes
