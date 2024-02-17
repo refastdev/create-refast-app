@@ -12,15 +12,16 @@
     "lint": "npx eslint src test",
     "prepare": "husky",
     "preview": "vite preview",
-    "test": "vitest run index.test.ts"
+    "test": "vitest run index.test.ts",
+    "i18n-extract": "refast-dev --cmd i18n-extract --source-path ./src --output-path ./src/locales/en-US.json"
   },
   "dependencies": {
-    "@refastdev/refast": "=0.0.5-alpha.2",
+    "@refastdev/refast": "^0.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@refastdev/refast-dev": "=0.0.5-alpha.2",
+    "@refastdev/refast-dev": "^0.0.6",
     "@types/jest": "^29.5.11",
     "@types/node": "^20.11.10",
     "@types/react": "^18.2.48",
