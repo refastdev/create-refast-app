@@ -6,13 +6,9 @@
   "type": "module",
   "main": "src/index.tsx",
   "scripts": {
-    "build": "npx eslint src test && vite build",
+    "build": "vite build",
     "dev": "vite --force",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "lint": "npx eslint src test",
-    "prepare": "husky",
     "preview": "vite preview",
-    "test": "vitest run index.test.ts",
     "i18n-extract": "refast-dev --cmd i18n-extract --source-path ./src --output-path ./src/locales/en-US.json"
   },
   "dependencies": {
@@ -22,17 +18,12 @@
   },
   "devDependencies": {
     "@refastdev/refast-dev": "^0.0.8",
-    "@types/jest": "^29.5.11",
     "@types/node": "^20.11.10",
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
-    "jest": "^29.7.0",
-    "husky": "^9.0.5",
-    "happy-dom": "^13.3.4",
     "sass": "^1.70.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3",
-    "vite": "^5.0.12",
-    "vitest": "^1.2.1"
+    "vite": "^5.0.12"
   }
 }

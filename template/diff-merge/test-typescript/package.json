@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "lint": "npx eslint src"
+  },
+  "devDependencies": {
+    "happy-dom": "^13.3.4",
+    "vitest": "^1.2.1"
+  }
+}

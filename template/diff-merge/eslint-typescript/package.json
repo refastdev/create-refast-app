@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "build": "npx eslint src && vite build",
+    "lint": "npx eslint src"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0"
+  }
+}
