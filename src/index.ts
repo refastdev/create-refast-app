@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { confirm, input, select } from '@inquirer/prompts';
+import { checkbox, input, select } from '@inquirer/prompts';
 
 import { create } from './create';
 
@@ -16,21 +16,22 @@ const main = async () => {
     message: 'Choose Language',
     choices: [{ name: 'typescript (default)', value: 'typescript' }, { value: 'javascript' }],
   });
-  const pkg = await select({
-    message: 'Choose Package Manager',
-    choices: [{ name: 'pnpm (default)', value: 'pnpm' }, { value: 'npm' }],
-  });
   const framework = await select({
     message: 'Choose Framework',
     choices: [{ name: 'react (default)', value: 'react' }, { value: 'preact' }],
   });
-  const isHusky = await confirm({
-    message: 'Is Add Husky (default: true)',
-    default: true,
+  const components = await checkbox({
+    message: 'Select Components',
+    choices: [
+      { name: 'prettier', value: 'prettier', checked: true },
+      { name: 'eslint', value: 'eslint', checked: true },
+      { name: 'vitest', value: 'vitest', checked: true },
+      { name: 'husky', value: 'husky', checked: true },
+    ],
   });
   try {
     console.log('please wait...');
-    await create({ projectName, appType, script, pkg, framework, isHusky });
+    await create({ projectName, appType, script, framework, components });
     console.log(`✅ create done! ${projectName}`);
   } catch (e) {
     console.error(`${e}`);

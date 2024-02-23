@@ -30,9 +30,4 @@ export default defineConfig({
       fileName: 'index',
     },
   },
-  test: {
-    include: ['test/**/*.test.?(c|m)[jt]s?(x)'],
-    exclude: ['**/node_modules/**', '**/dist/**'],
-    globals: true,
-  },
 });

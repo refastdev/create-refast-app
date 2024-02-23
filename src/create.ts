@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { merge } from 'ts-deepmerge';
 
 import { dirCopy, isBinaryFile } from './utils';
 
@@ -7,21 +8,42 @@ interface ProjectOptions {
   projectName: string;
   appType: string;
   script: string;
-  pkg: string;
   framework: string;
-  isHusky: boolean;
+  components: string[];
 }
+
+const mergeJson = (srcPath: string, toPath: string) => {
+  const newJson = JSON.parse(fs.readFileSync(srcPath, { encoding: 'utf8' }));
+  const baseJson = JSON.parse(fs.readFileSync(toPath, { encoding: 'utf8' }));
+  const newObject = merge(baseJson, newJson);
+  const newObjectJson = JSON.stringify(newObject, undefined, 2);
+  fs.writeFileSync(toPath, newObjectJson, { encoding: 'utf8' });
+};
+
+const mergeCopy = async (templatePath: string, projectPath: string) => {
+  dirCopy(templatePath, projectPath, (srcPath, toPath) => {
+    if (srcPath.endsWith('package.json')) {
+      mergeJson(srcPath, toPath);
+      return true;
+    } else if (srcPath.endsWith('tsconfig.json')) {
+      mergeJson(srcPath, toPath);
+      return true;
+    }
+    return false;
+  });
+};
 
 const generateProject = async (
   templatePath: string,
+  templateSourcePath: string,
   projectPath: string,
   options: ProjectOptions,
 ) => {
-  if (!fs.existsSync(templatePath)) {
-    throw new Error(`template missing: ${templatePath}`);
+  if (!fs.existsSync(templateSourcePath)) {
+    throw new Error(`template missing: ${templateSourcePath}`);
   }
   const REPLACE_REG = /{{PROJECT_NAME}}/g;
-  dirCopy(templatePath, projectPath, (srcPath, toPath) => {
+  dirCopy(templateSourcePath, projectPath, (srcPath, toPath) => {
     if (!isBinaryFile(srcPath)) {
       const data = fs.readFileSync(srcPath, { encoding: 'utf8' });
       const newData = data.replace(REPLACE_REG, options.projectName);
@@ -30,6 +52,25 @@ const generateProject = async (
     }
     return false;
   });
+  const frameworkPath = path.resolve(
+    templatePath,
+    `diff-merge/${options.framework}-${options.script}`,
+  );
+  await mergeCopy(frameworkPath, projectPath);
+  for (let i = 0; i < options.components.length; i++) {
+    const component = options.components[i];
+    const componentPath = path.resolve(templatePath, `diff-merge/${component}`);
+    const componentScriptPath = path.resolve(
+      templatePath,
+      `diff-merge/${component}-${options.script}`,
+    );
+    if (fs.existsSync(componentPath)) {
+      await mergeCopy(componentPath, projectPath);
+    }
+    if (fs.existsSync(componentScriptPath)) {
+      await mergeCopy(componentScriptPath, projectPath);
+    }
+  }
 };
 
 const create = async (options: ProjectOptions) => {
@@ -41,7 +82,7 @@ const create = async (options: ProjectOptions) => {
   const templatePath = path.resolve(__dirname, '../template');
   const templateName = `${options.appType}-${options.script}`;
   const templateSourcePath = path.join(templatePath, templateName);
-  await generateProject(templateSourcePath, targetProjectPath, options);
+  await generateProject(templatePath, templateSourcePath, targetProjectPath, options);
 };
 
 export { create };

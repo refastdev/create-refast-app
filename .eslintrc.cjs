@@ -13,7 +13,7 @@ module.exports = {
         jasmine: true,
       },
       parser: '@typescript-eslint/parser',
-      plugins: ['@typescript-eslint', 'jest'],
+      plugins: ['@typescript-eslint'],
       extends: ['eslint:recommended', 'prettier'],
       rules: {
         'indent': [

@@ -12,15 +12,11 @@
     "i18n-extract": "refast-dev --cmd i18n-extract --source-path ./src --output-path ./src/locales/en-US.json"
   },
   "dependencies": {
-    "@refastdev/refast": "^0.0.8",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@refastdev/refast": "^0.0.10"
   },
   "devDependencies": {
-    "@refastdev/refast-dev": "^0.0.8",
+    "@refastdev/refast-dev": "^0.0.10",
     "@types/node": "^20.11.10",
-    "@types/react": "^18.2.48",
-    "@types/react-dom": "^18.2.18",
     "sass": "^1.70.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3",
