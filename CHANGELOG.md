@@ -1,5 +1,11 @@
 # @refastdev/create-refast-app
 
+## 0.0.7
+
+### Patch Changes
+
+- force create gitignore
+
 ## 0.0.6
 
 ### Patch Changes
