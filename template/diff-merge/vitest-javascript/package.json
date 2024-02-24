@@ -4,6 +4,6 @@
     "vitest": "^1.2.1"
   },
   "scripts": {
-    "test": "vitest run index.test.ts"
+    "test": "vitest run index.test.js"
   }
 }

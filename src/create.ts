@@ -12,11 +12,27 @@ interface ProjectOptions {
   components: string[];
 }
 
+type AnyObj = { key: string; value: any };
 const mergeJson = (srcPath: string, toPath: string) => {
+  const stringify = require('json-stable-stringify');
   const newJson = JSON.parse(fs.readFileSync(srcPath, { encoding: 'utf8' }));
   const baseJson = JSON.parse(fs.readFileSync(toPath, { encoding: 'utf8' }));
   const newObject = merge(baseJson, newJson);
-  const newObjectJson = JSON.stringify(newObject, undefined, 2);
+  const newObjectJson = `${stringify(newObject, {
+    cmp: (a: AnyObj, b: AnyObj) => {
+      const aType = typeof a.value;
+      const bType = typeof b.value;
+      if (aType !== 'object' && bType === 'object') {
+        return -1;
+      }
+      if (aType === 'object' && bType !== 'object') {
+        return 1;
+      }
+      return a.key.localeCompare(b.key);
+    },
+    space: 2,
+  })}\n`;
+  // const newObjectJson = JSON.stringify(newObject, undefined, 2);
   fs.writeFileSync(toPath, newObjectJson, { encoding: 'utf8' });
 };
 
