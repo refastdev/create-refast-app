@@ -7,7 +7,7 @@ export default defineConfig({
   main: {
     build: {
       lib: {
-        entry: 'src/main/index.ts',
+        entry: 'src/main/index.js',
       },
       outDir: 'out/main',
       assetsInlineLimit: 0, // 小于4kb的资源将会被内联为base64
