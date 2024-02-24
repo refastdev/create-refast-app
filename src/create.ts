@@ -47,6 +47,34 @@ const mergeJson = (srcPath: string, toPath: string) => {
   fs.writeFileSync(toPath, newObjectJson, { encoding: 'utf8' });
 };
 
+const createOtherFile = async (projectPath: string) => {
+  const gitignore = `logs
+*.log*
+
+node_modules
+
+.eslintcache
+
+# OSX
+.DS_Store
+
+dist
+out
+build
+app
+
+.idea
+
+package-lock.json
+pnpm-lock.yaml
+pnpm-lock.json
+
+*.tsbuildinfo
+`;
+  const gitignorePath = path.join(projectPath, '.gitignore');
+  fs.writeFileSync(gitignorePath, gitignore, { encoding: 'utf8' });
+};
+
 const mergeCopy = async (templatePath: string, projectPath: string) => {
   dirCopy(templatePath, projectPath, (srcPath, toPath) => {
     if (srcPath.endsWith('package.json')) {
@@ -134,6 +162,7 @@ const create = async (options: ProjectOptions) => {
     }
   }
   await mergeWebProject(templatePath, targetProjectPath, options);
+  await createOtherFile(targetProjectPath);
 };
 
 export { create };
