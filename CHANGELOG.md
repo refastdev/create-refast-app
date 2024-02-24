@@ -1,5 +1,11 @@
 # @refastdev/create-refast-app
 
+## 0.0.4
+
+### Patch Changes
+
+- update electron-template
+
 ## 0.0.3
 
 ### Patch Changes
