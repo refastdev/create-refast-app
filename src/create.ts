@@ -12,6 +12,17 @@ interface ProjectOptions {
   components: string[];
 }
 
+const webDirMap: { [key: string]: { webDir: string } } = {
+  tauri: {
+    webDir: 'web',
+  },
+  electron: {
+    webDir: 'src/renderer',
+  },
+};
+
+const REPLACE_REG = /{{PROJECT_NAME}}/g;
+
 type AnyObj = { key: string; value: any };
 const mergeJson = (srcPath: string, toPath: string) => {
   const stringify = require('json-stable-stringify');
@@ -39,35 +50,40 @@ const mergeJson = (srcPath: string, toPath: string) => {
 const mergeCopy = async (templatePath: string, projectPath: string) => {
   dirCopy(templatePath, projectPath, (srcPath, toPath) => {
     if (srcPath.endsWith('package.json')) {
-      mergeJson(srcPath, toPath);
+      if (fs.existsSync(toPath)) {
+        mergeJson(srcPath, toPath);
+      }
       return true;
     } else if (srcPath.endsWith('tsconfig.json')) {
-      mergeJson(srcPath, toPath);
+      if (!fs.existsSync(toPath)) {
+        toPath = path.join(path.dirname(toPath), 'tsconfig.web.json');
+      }
+      if (fs.existsSync(toPath)) {
+        mergeJson(srcPath, toPath);
+      }
       return true;
     }
     return false;
   });
 };
 
-const generateProject = async (
-  templatePath: string,
-  templateSourcePath: string,
-  projectPath: string,
-  options: ProjectOptions,
-) => {
-  if (!fs.existsSync(templateSourcePath)) {
-    throw new Error(`template missing: ${templateSourcePath}`);
-  }
-  const REPLACE_REG = /{{PROJECT_NAME}}/g;
-  dirCopy(templateSourcePath, projectPath, (srcPath, toPath) => {
+const replaceCopy = async (srcDir: string, targetDir: string, reg: RegExp, replaceName: string) => {
+  dirCopy(srcDir, targetDir, (srcPath, toPath) => {
     if (!isBinaryFile(srcPath)) {
       const data = fs.readFileSync(srcPath, { encoding: 'utf8' });
-      const newData = data.replace(REPLACE_REG, options.projectName);
+      const newData = data.replace(reg, replaceName);
       fs.writeFileSync(toPath, newData, { encoding: 'utf8' });
       return true;
     }
     return false;
   });
+};
+
+const mergeWebProject = async (
+  templatePath: string,
+  projectPath: string,
+  options: ProjectOptions,
+) => {
   const frameworkPath = path.resolve(
     templatePath,
     `diff-merge/${options.framework}-${options.script}`,
@@ -96,9 +112,27 @@ const create = async (options: ProjectOptions) => {
     throw new Error(`folder: '${options.projectName}' already exists`);
   }
   const templatePath = path.resolve(__dirname, '../template');
-  const templateName = `${options.appType}-${options.script}`;
-  const templateSourcePath = path.join(templatePath, templateName);
-  await generateProject(templatePath, templateSourcePath, targetProjectPath, options);
+  const webSourcePath = path.join(templatePath, `web-${options.script}`);
+
+  if (!fs.existsSync(webSourcePath)) {
+    throw new Error(`template missing: ${webSourcePath}`);
+  }
+
+  if (options.appType === 'web') {
+    replaceCopy(webSourcePath, targetProjectPath, REPLACE_REG, options.projectName);
+  } else {
+    const sourcePath = path.join(templatePath, `${options.appType}-${options.script}`);
+    await replaceCopy(sourcePath, targetProjectPath, REPLACE_REG, options.projectName);
+    const opt = webDirMap[options.appType];
+    const webTargetPath = opt?.webDir;
+    if (webTargetPath !== undefined) {
+      const webTargetProjectPath = path.join(targetProjectPath, webTargetPath);
+      if (!fs.existsSync(webTargetProjectPath)) {
+        fs.mkdirSync(webTargetProjectPath, { recursive: true });
+      }
+    }
+  }
+  await mergeWebProject(templatePath, targetProjectPath, options);
 };
 
 export { create };
