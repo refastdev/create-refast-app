@@ -1,6 +1,6 @@
 {
   "name": "@refastdev/create-refast-app",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "create-refast-app",
   "main": "dist/index.js",
   "license": "MIT",
@@ -10,7 +10,13 @@
   "files": [
     "dist",
     "bin",
-    "template"
+    "template",
+    "template/electron-javascript/.gitignore",
+    "template/electron-typescript/.gitignore",
+    "template/web-javascript/.gitignore",
+    "template/web-typescript/.gitignore",
+    "template/tauri-javascript/.gitignore",
+    "template/tauri-typescript/.gitignore"
   ],
   "exports": {
     ".": {

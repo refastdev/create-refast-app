@@ -1,5 +1,11 @@
 # @refastdev/create-refast-app
 
+## 0.0.5
+
+### Patch Changes
+
+- add npm ignore
+
 ## 0.0.4
 
 ### Patch Changes
