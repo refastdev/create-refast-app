@@ -6,6 +6,7 @@
     "refast",
     "refastdev",
     "tailwindcss",
-    "trivago"
+    "trivago",
+    "typecheck"
   ]
 }

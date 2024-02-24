@@ -20,15 +20,19 @@ const main = async () => {
     message: 'Choose Framework',
     choices: [{ name: 'react (default)', value: 'react' }, { value: 'preact' }],
   });
+  const choices = [
+    { name: 'prettier', value: 'prettier', checked: true },
+    { name: 'husky', value: 'husky', checked: true },
+  ];
+  if (appType === 'web') {
+    choices.push({ name: 'eslint', value: 'eslint', checked: true });
+    choices.push({ name: 'vitest', value: 'vitest', checked: true });
+  }
   const components = await checkbox({
     message: 'Select Components',
-    choices: [
-      { name: 'prettier', value: 'prettier', checked: true },
-      { name: 'eslint', value: 'eslint', checked: true },
-      { name: 'vitest', value: 'vitest', checked: true },
-      { name: 'husky', value: 'husky', checked: true },
-    ],
+    choices,
   });
+
   try {
     console.log('please wait...');
     await create({ projectName, appType, script, framework, components });

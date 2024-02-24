@@ -55,8 +55,9 @@ const mergeCopy = async (templatePath: string, projectPath: string) => {
       }
       return true;
     } else if (srcPath.endsWith('tsconfig.json')) {
-      if (!fs.existsSync(toPath)) {
-        toPath = path.join(path.dirname(toPath), 'tsconfig.web.json');
+      const webToPath = path.join(path.dirname(toPath), 'tsconfig.web.json');
+      if (fs.existsSync(webToPath)) {
+        toPath = webToPath;
       }
       if (fs.existsSync(toPath)) {
         mergeJson(srcPath, toPath);
