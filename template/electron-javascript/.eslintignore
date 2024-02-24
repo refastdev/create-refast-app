@@ -1,0 +1,22 @@
+.gitignore
+.gitattributes
+
+logs
+*.log*
+
+node_modules
+
+# OSX
+.DS_Store
+
+dist
+out
+build
+
+.idea
+
+package-lock.json
+pnpm-lock.yaml
+pnpm-lock.json
+
+*.tsbuildinfo

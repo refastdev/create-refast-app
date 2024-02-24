@@ -19,7 +19,7 @@ const fileForeach = (
     const stat = fs.lstatSync(fullPath);
     if (stat.isDirectory()) {
       fileForeach(fullPath, callback, relativePath);
-    } else {
+    } else if (stat.isFile()) {
       callback(relativePath, stat);
     }
   }

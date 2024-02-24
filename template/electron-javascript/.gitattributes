@@ -1,0 +1,26 @@
+*       text    eol=lf
+*.mp3   binary
+*.wav   binary
+*.flac  binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.ico   binary
+*.icns  binary
+*.webp  binary
+*.eot   binary
+*.otf   binary
+*.ttf   binary
+*.woff  binary
+*.woff2 binary
+*.exe   binary
+*.dll   binary
+*.lib   binary
+*.so    binary
+*.a     binary
+*.o     binary
+*.zip   binary
+*.7z    binary
+*.rar   binary
+
+data/mac/tools/binary2text  binary
