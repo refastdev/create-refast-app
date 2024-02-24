@@ -25,7 +25,7 @@ async function createWindow() {
   });
   const indexPath = 'index.html';
   if (isDevelopment) {
-    const url = new URL(process.env['ELECTRON_RENDERER_URL']!);
+    const url = new URL(process.env['ELECTRON_RENDERER_URL']);
     url.pathname = indexPath;
     mainWindow.loadURL(url.href).then(() => {
       if (mainWindow && !mainWindow.webContents.isDevToolsOpened()) {
