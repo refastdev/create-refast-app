@@ -1,5 +1,11 @@
 # @refastdev/create-refast-app
 
+## 0.0.9
+
+### Patch Changes
+
+- update preact option
+
 ## 0.0.8
 
 ### Patch Changes
