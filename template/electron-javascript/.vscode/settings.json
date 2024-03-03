@@ -1,12 +1,13 @@
 {
   "cSpell.words": [
     "commitlint",
+    "compat",
     "packagejson",
     "preact",
     "refast",
     "refastdev",
     "tailwindcss",
-    "trivago",
-    "typecheck"
+    "tauri",
+    "trivago"
   ]
 }
