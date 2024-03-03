@@ -1,5 +1,11 @@
 # @refastdev/create-refast-app
 
+## 0.0.8
+
+### Patch Changes
+
+- tauri template update
+
 ## 0.0.7
 
 ### Patch Changes
