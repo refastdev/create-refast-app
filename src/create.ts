@@ -15,9 +15,6 @@ interface ProjectOptions {
 }
 
 const webDirMap: { [key: string]: { webDir: string } } = {
-  tauri: {
-    webDir: 'web',
-  },
   electron: {
     webDir: 'src/renderer',
   },

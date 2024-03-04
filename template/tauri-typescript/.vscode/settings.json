@@ -9,6 +9,7 @@
     "refast",
     "refastdev",
     "tailwindcss",
+    "tauri",
     "trivago"
   ],
   "css.customData": [".vscode/css.json"]
