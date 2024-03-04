@@ -20,6 +20,16 @@ const main = async () => {
     message: 'Choose Framework',
     choices: [{ name: 'react (default)', value: 'react' }, { value: 'preact' }],
   });
+
+  const uiChoices = [{ name: 'nonuse (default)', value: '' }];
+  if (framework === 'react') {
+    uiChoices.push({ name: 'antd', value: 'antd' });
+  }
+  const ui = await select({
+    message: 'Choose UI',
+    choices: uiChoices,
+  });
+
   const choices = [
     { name: 'prettier', value: 'prettier', checked: true },
     { name: 'husky', value: 'husky', checked: true },
@@ -35,7 +45,7 @@ const main = async () => {
 
   try {
     console.log('please wait...');
-    await create({ projectName, appType, script, framework, components });
+    await create({ projectName, appType, script, framework, ui, components });
     console.log(`✅ create done! ${projectName}`);
   } catch (e) {
     console.error(`${e}`);

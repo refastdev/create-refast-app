@@ -8,6 +8,7 @@ interface ProjectOptions {
   projectName: string;
   appType: string;
   script: string;
+  ui: string;
   framework: string;
   components: string[];
 }
@@ -124,6 +125,10 @@ const mergeWebProject = async (
     `diff-merge/${options.framework}-${options.script}`,
   );
   await mergeCopy(frameworkPath, projectPath);
+  if (options.ui !== undefined && options.ui !== '') {
+    const uiPath = path.resolve(templatePath, `diff-merge/${options.ui}-${options.script}`);
+    await mergeCopy(uiPath, projectPath);
+  }
   for (let i = 0; i < options.components.length; i++) {
     const component = options.components[i];
     const componentPath = path.resolve(templatePath, `diff-merge/${component}`);
