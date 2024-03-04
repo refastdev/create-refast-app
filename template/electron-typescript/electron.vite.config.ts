@@ -1,7 +1,6 @@
 import { refastPlugin } from '@refastdev/refast-dev';
 import { defineConfig, externalizeDepsPlugin } from 'electron-vite';
 import path from 'path';
-import tailwindcss from 'tailwindcss';
 
 export default defineConfig({
   main: {
@@ -62,18 +61,6 @@ export default defineConfig({
       alias: {
         '@renderer': path.resolve('src/renderer/src'),
         '@common': path.resolve('src/common'),
-      },
-    },
-    css: {
-      // postcss配置: https://cn.vitejs.dev/config/shared-options.html#css-postcss
-      postcss: {
-        plugins: [tailwindcss],
-      },
-      preprocessorOptions: {
-        less: {
-          // modifyVars: { 'primary-color': '#13c2c2' },
-          javascriptEnabled: true, // 支持内联 JavaScript
-        },
       },
     },
   },

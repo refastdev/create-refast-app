@@ -3,11 +3,13 @@
     "antd",
     "commitlint",
     "compat",
+    "daisyui",
     "packagejson",
     "preact",
     "refast",
     "refastdev",
     "tailwindcss",
     "trivago"
-  ]
+  ],
+  "css.customData": [".vscode/css.json"]
 }

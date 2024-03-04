@@ -10,6 +10,7 @@ interface ProjectOptions {
   script: string;
   ui: string;
   framework: string;
+  tailwindcss: boolean;
   components: string[];
 }
 
@@ -76,27 +77,30 @@ pnpm-lock.json
   fs.writeFileSync(gitignorePath, gitignore, { encoding: 'utf8' });
 };
 
-const mergeCopy = async (templatePath: string, projectPath: string) => {
-  dirCopy(templatePath, projectPath, (srcPath, toPath) => {
-    if (srcPath.endsWith('package.json')) {
+const mergeCopy = async (templatePath: string, projectPath: string, webProjectPath: string) => {
+  dirCopy(templatePath, projectPath, (srcPath, toPath, relativePath) => {
+    if (
+      srcPath.endsWith('package.json') ||
+      srcPath.endsWith('tsconfig.json') ||
+      srcPath.endsWith('tsconfig.web.json') ||
+      srcPath.endsWith('tsconfig.node.json')
+    ) {
+      const dir = path.dirname(toPath);
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+      }
       if (fs.existsSync(toPath)) {
         mergeJson(srcPath, toPath);
       }
       return true;
-    } else if (srcPath.endsWith('tsconfig.json')) {
-      if (fs.existsSync(toPath)) {
-        mergeJson(srcPath, toPath);
+    }
+    if (srcPath.replace(/\\/g, '/').startsWith(`${templatePath.replace(/\\/g, '/')}/src/`)) {
+      toPath = path.join(webProjectPath, relativePath);
+      const dir = path.dirname(toPath);
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
       }
-      return true;
-    } else if (srcPath.endsWith('tsconfig.web.json')) {
-      if (fs.existsSync(toPath)) {
-        mergeJson(srcPath, toPath);
-      }
-      return true;
-    } else if (srcPath.endsWith('tsconfig.node.json')) {
-      if (fs.existsSync(toPath)) {
-        mergeJson(srcPath, toPath);
-      }
+      fs.copyFileSync(srcPath, toPath);
       return true;
     }
     return false;
@@ -106,6 +110,10 @@ const mergeCopy = async (templatePath: string, projectPath: string) => {
 const replaceCopy = async (srcDir: string, targetDir: string, reg: RegExp, replaceName: string) => {
   dirCopy(srcDir, targetDir, (srcPath, toPath) => {
     if (!isBinaryFile(srcPath)) {
+      const dir = path.dirname(toPath);
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+      }
       const data = fs.readFileSync(srcPath, { encoding: 'utf8' });
       const newData = data.replace(reg, replaceName);
       fs.writeFileSync(toPath, newData, { encoding: 'utf8' });
@@ -118,16 +126,33 @@ const replaceCopy = async (srcDir: string, targetDir: string, reg: RegExp, repla
 const mergeWebProject = async (
   templatePath: string,
   projectPath: string,
+  webTargetProjectPath: string,
   options: ProjectOptions,
 ) => {
   const frameworkPath = path.resolve(
     templatePath,
     `diff-merge/${options.framework}-${options.script}`,
   );
-  await mergeCopy(frameworkPath, projectPath);
+  await mergeCopy(frameworkPath, projectPath, webTargetProjectPath);
+  if (options.framework === 'preact') {
+    const preactVitePath = path.resolve(
+      templatePath,
+      `diff-merge/preact-vite-${options.appType}-${options.script}`,
+    );
+    await mergeCopy(preactVitePath, projectPath, webTargetProjectPath);
+  }
+  if (options.tailwindcss) {
+    const tailwindcssPath = path.resolve(templatePath, 'diff-merge/tailwindcss');
+    await mergeCopy(tailwindcssPath, projectPath, webTargetProjectPath);
+  }
   if (options.ui !== undefined && options.ui !== '') {
     const uiPath = path.resolve(templatePath, `diff-merge/${options.ui}-${options.script}`);
-    await mergeCopy(uiPath, projectPath);
+    const frameworkUIPath = path.resolve(
+      templatePath,
+      `diff-merge/${options.framework}-${options.ui}-${options.script}`,
+    );
+    await mergeCopy(uiPath, projectPath, webTargetProjectPath);
+    await mergeCopy(frameworkUIPath, projectPath, webTargetProjectPath);
   }
   for (let i = 0; i < options.components.length; i++) {
     const component = options.components[i];
@@ -137,10 +162,10 @@ const mergeWebProject = async (
       `diff-merge/${component}-${options.script}`,
     );
     if (fs.existsSync(componentPath)) {
-      await mergeCopy(componentPath, projectPath);
+      await mergeCopy(componentPath, projectPath, webTargetProjectPath);
     }
     if (fs.existsSync(componentScriptPath)) {
-      await mergeCopy(componentScriptPath, projectPath);
+      await mergeCopy(componentScriptPath, projectPath, webTargetProjectPath);
     }
   }
 };
@@ -158,6 +183,7 @@ const create = async (options: ProjectOptions) => {
     throw new Error(`template missing: ${webSourcePath}`);
   }
 
+  let webTargetProjectPath: string = targetProjectPath;
   if (options.appType === 'web') {
     replaceCopy(webSourcePath, targetProjectPath, REPLACE_REG, options.projectName);
   } else {
@@ -166,13 +192,13 @@ const create = async (options: ProjectOptions) => {
     const opt = webDirMap[options.appType];
     const webTargetPath = opt?.webDir;
     if (webTargetPath !== undefined) {
-      const webTargetProjectPath = path.join(targetProjectPath, webTargetPath);
+      webTargetProjectPath = path.join(targetProjectPath, webTargetPath);
       if (!fs.existsSync(webTargetProjectPath)) {
         fs.mkdirSync(webTargetProjectPath, { recursive: true });
       }
     }
   }
-  await mergeWebProject(templatePath, targetProjectPath, options);
+  await mergeWebProject(templatePath, targetProjectPath, webTargetProjectPath, options);
   await createOtherFile(targetProjectPath);
 };
 

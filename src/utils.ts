@@ -28,16 +28,16 @@ const fileForeach = (
 const dirCopy = (
   sourcePath: string,
   targetPath: string,
-  writeFile: (srcPath: string, toPath: string) => boolean,
+  writeFile: (srcPath: string, toPath: string, relativePath: string) => boolean,
 ) => {
   fileForeach(sourcePath, (relativePath) => {
     const filePath = path.join(sourcePath, relativePath);
     const targetFilePath = path.join(targetPath, relativePath);
-    const dir = path.dirname(targetFilePath);
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
-    }
-    if (!writeFile(filePath, targetFilePath)) {
+    if (!writeFile(filePath, targetFilePath, relativePath)) {
+      const dir = path.dirname(targetFilePath);
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+      }
       fs.copyFileSync(filePath, targetFilePath);
     }
   });

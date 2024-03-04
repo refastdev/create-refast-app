@@ -2,6 +2,7 @@
   "cSpell.words": [
     "antd",
     "commitlint",
+    "daisyui",
     "deepmerge",
     "EDITMSG",
     "isbinaryfile",
@@ -12,6 +13,7 @@
     "preinstall",
     "refast",
     "refastdev",
+    "tailwindcss",
     "tauri",
     "trivago"
   ]

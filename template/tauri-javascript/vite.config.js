@@ -1,7 +1,5 @@
-/// <reference types="vite" />
 import { refastPlugin } from '@refastdev/refast-dev';
 import path from 'path';
-import tailwindcss from 'tailwindcss';
 import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
@@ -16,12 +14,6 @@ export default defineConfig(async () => ({
       appType: 'react',
     }),
   ],
-  css: {
-    postcss: {
-      // tailwindcss支持
-      plugins: [tailwindcss],
-    },
-  },
 
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   //

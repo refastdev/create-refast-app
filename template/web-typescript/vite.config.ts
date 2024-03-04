@@ -1,7 +1,6 @@
 /// <reference types="vite" />
 import { refastPlugin } from '@refastdev/refast-dev';
 import path from 'path';
-import tailwindcss from 'tailwindcss';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
@@ -16,10 +15,4 @@ export default defineConfig({
       appType: 'react',
     }),
   ],
-  css: {
-    postcss: {
-      // tailwindcss支持
-      plugins: [tailwindcss],
-    },
-  },
 });

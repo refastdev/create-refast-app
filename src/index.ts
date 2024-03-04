@@ -20,8 +20,7 @@ const main = async () => {
     message: 'Choose Framework',
     choices: [{ name: 'react (default)', value: 'react' }, { value: 'preact' }],
   });
-
-  const uiChoices = [{ name: 'nonuse (default)', value: '' }];
+  const uiChoices = [{ name: 'daisyui (default)', value: 'daisyui' }];
   if (framework === 'react') {
     uiChoices.push({ name: 'antd', value: 'antd' });
   }
@@ -34,8 +33,10 @@ const main = async () => {
     { name: 'prettier', value: 'prettier', checked: true },
     { name: 'husky', value: 'husky', checked: true },
   ];
-  if (appType === 'web') {
+  if (appType === 'web' || appType === 'tauri') {
     choices.push({ name: 'eslint', value: 'eslint', checked: true });
+  }
+  if (appType === 'web') {
     choices.push({ name: 'vitest', value: 'vitest', checked: true });
   }
   const components = await checkbox({
@@ -43,12 +44,17 @@ const main = async () => {
     choices,
   });
 
+  let tailwindcss = false;
+  if (ui === 'daisyui') {
+    tailwindcss = true;
+  }
+
   try {
     console.log('please wait...');
-    await create({ projectName, appType, script, framework, ui, components });
+    await create({ projectName, appType, script, framework, ui, tailwindcss, components });
     console.log(`✅ create done! ${projectName}`);
   } catch (e) {
-    console.error(`${e}`);
+    console.error(e);
   }
 };
 
