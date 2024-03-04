@@ -1,5 +1,11 @@
 # @refastdev/create-refast-app
 
+## 0.0.12
+
+### Patch Changes
+
+- add nonuse
+
 ## 0.0.11
 
 ### Patch Changes
