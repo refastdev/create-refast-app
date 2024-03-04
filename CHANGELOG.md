@@ -1,5 +1,11 @@
 # @refastdev/create-refast-app
 
+## 0.0.13
+
+### Patch Changes
+
+- fix tauri path
+
 ## 0.0.12
 
 ### Patch Changes
