@@ -20,7 +20,10 @@ const main = async () => {
     message: 'Choose Framework',
     choices: [{ name: 'react (default)', value: 'react' }, { value: 'preact' }],
   });
-  const uiChoices = [{ name: 'daisyui (default)', value: 'daisyui' }];
+  const uiChoices = [
+    { name: 'daisyui (default)', value: 'daisyui' },
+    { name: 'nonuse', value: '' },
+  ];
   if (framework === 'react') {
     uiChoices.push({ name: 'antd', value: 'antd' });
   }
