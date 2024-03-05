@@ -1,5 +1,11 @@
 # @refastdev/create-refast-app
 
+## 0.0.16
+
+### Patch Changes
+
+- tailwind template
+
 ## 0.0.15
 
 ### Patch Changes
