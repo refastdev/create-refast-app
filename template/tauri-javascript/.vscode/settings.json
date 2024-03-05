@@ -12,5 +12,5 @@
     "tauri",
     "trivago"
   ],
-  "css.customData": [".vscode/css.json"]
+  "css.customData": [".vscode/tailwind.json"]
 }
