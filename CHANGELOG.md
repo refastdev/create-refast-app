@@ -1,5 +1,11 @@
 # @refastdev/create-refast-app
 
+## 0.0.15
+
+### Patch Changes
+
+- fix tsconfig error
+
 ## 0.0.14
 
 ### Patch Changes
