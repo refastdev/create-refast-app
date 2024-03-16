@@ -12,11 +12,11 @@
     "tauri": "tauri"
   },
   "dependencies": {
-    "@refastdev/refast": "^0.0.17",
+    "@refastdev/refast": "^0.0.18",
     "@tauri-apps/api": "^1"
   },
   "devDependencies": {
-    "@refastdev/refast-dev": "^0.0.17",
+    "@refastdev/refast-dev": "^0.0.18",
     "@tauri-apps/cli": "^1",
     "@types/node": "^20.11.10",
     "sass": "^1.70.0",
