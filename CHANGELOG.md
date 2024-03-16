@@ -1,5 +1,11 @@
 # @refastdev/create-refast-app
 
+## 0.0.17
+
+### Patch Changes
+
+- i18n.t return string
+
 ## 0.0.16
 
 ### Patch Changes
