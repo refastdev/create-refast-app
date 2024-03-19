@@ -1,6 +1,6 @@
 {
   "name": "@refastdev/create-refast-app",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "create-refast-app",
   "main": "dist/index.js",
   "license": "MIT",
