@@ -1,6 +1,6 @@
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
-  ignorePatterns: ['node_modules/**', 'dist/**'],
+  ignorePatterns: ['node_modules/**', 'dist/**', 'tailwind.config.cjs', '.prettierrc.cjs'],
   overrides: [
     {
       files: ['*.ts', '*.tsx', '*.js', '*.jsx'],
