@@ -2,7 +2,10 @@ import fs from 'fs';
 import path from 'path';
 import { merge } from 'ts-deepmerge';
 
+
+
 import { dirCopy, isBinaryFile } from './utils';
+
 
 interface ProjectOptions {
   projectName: string;
@@ -144,12 +147,15 @@ const mergeWebProject = async (
   }
   if (options.ui !== undefined && options.ui !== '') {
     const uiPath = path.resolve(templatePath, `diff-merge/${options.ui}-${options.script}`);
+    await mergeCopy(uiPath, projectPath, webTargetProjectPath);
+
     const frameworkUIPath = path.resolve(
       templatePath,
       `diff-merge/${options.framework}-${options.ui}-${options.script}`,
     );
-    await mergeCopy(uiPath, projectPath, webTargetProjectPath);
-    await mergeCopy(frameworkUIPath, projectPath, webTargetProjectPath);
+    if (fs.existsSync(frameworkUIPath)) {
+      await mergeCopy(frameworkUIPath, projectPath, webTargetProjectPath);
+    }
   }
   for (let i = 0; i < options.components.length; i++) {
     const component = options.components[i];

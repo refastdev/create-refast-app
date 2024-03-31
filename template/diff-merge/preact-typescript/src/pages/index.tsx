@@ -16,7 +16,7 @@ function Index() {
         </a>
       </div>
       <h1>Refast + Preact</h1>
-      <div className="card">
+      <div className="card-index">
         <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
         <p>
           Edit <code>src/pages/index.tsx</code> and save to test HMR

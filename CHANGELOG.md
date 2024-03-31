@@ -1,5 +1,17 @@
 # @refastdev/create-refast-app
 
+## 0.0.24
+
+### Patch Changes
+
+- fix preact create error
+
+## 0.0.23
+
+### Patch Changes
+
+- update template, update refast to 0.0.30
+
 ## 0.0.22
 
 ### Patch Changes

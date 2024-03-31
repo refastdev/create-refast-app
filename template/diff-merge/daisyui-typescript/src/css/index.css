@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: unset;
+}
+
+img {
+  display: unset;
+}
+
 #root {
   width: 100%;
 }
