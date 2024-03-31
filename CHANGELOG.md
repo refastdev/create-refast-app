@@ -1,5 +1,11 @@
 # @refastdev/create-refast-app
 
+## 0.0.25
+
+### Patch Changes
+
+- fix css daisyui
+
 ## 0.0.24
 
 ### Patch Changes
